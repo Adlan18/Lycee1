@@ -33,6 +33,38 @@ href="style.css">
 
 <section class="card">
 
+<h2>Аккаунт 👤</h2>
+
+<input
+type="email"
+id="email"
+placeholder="Email">
+
+<input
+type="password"
+id="password"
+placeholder="Пароль">
+
+<button onclick="registerUser()">
+Регистрация
+</button>
+
+<button onclick="loginUser()">
+Войти
+</button>
+
+<button onclick="logoutUser()">
+Выйти
+</button>
+
+<p id="userStatus">
+Вы не вошли 😅
+</p>
+
+</section>
+
+<section class="card">
+
 <h2>Новости 📰</h2>
 
 <div id="newsList">
@@ -151,21 +183,6 @@ placeholder="Напиши заметку...">
 
 <section class="card">
 
-<h2>Загрузка фото 📸</h2>
-
-<input
-type="file"
-id="uploadPhoto">
-
-<div
-class="gallery"
-id="realGallery">
-</div>
-
-</section>
-
-<section class="card">
-
 <h2>Панель администратора ⚙️</h2>
 
 <input
@@ -194,20 +211,6 @@ placeholder="Новая новость">
 Добавить
 </button>
 
-<h3>Изменить расписание 📚</h3>
-
-<textarea id="scheduleInput">
-
-Понедельник — Математика
-Вторник — Информатика
-Среда — Английский
-
-</textarea>
-
-<button onclick="changeSchedule()">
-Сохранить
-</button>
-
 <h3>Добавить ДЗ 📖</h3>
 
 <input
@@ -216,7 +219,7 @@ id="homeworkInput"
 placeholder="Новое ДЗ">
 
 <button onclick="addHomework()">
-Добавить ДЗ
+Добавить
 </button>
 
 <h3>Добавить оценку 📊</h3>
@@ -232,17 +235,6 @@ id="studentGrade"
 placeholder="Оценка">
 
 <button onclick="addGrade()">
-Добавить оценку
-</button>
-
-<h3>Добавить ученика в топ 🏆</h3>
-
-<input
-type="text"
-id="topInput"
-placeholder="Имя и XP">
-
-<button onclick="addTopStudent()">
 Добавить
 </button>
 
@@ -251,7 +243,7 @@ placeholder="Имя и XP">
 <input
 type="text"
 id="notificationInput"
-placeholder="Новое уведомление">
+placeholder="Уведомление">
 
 <button onclick="addNotification()">
 Отправить
@@ -286,6 +278,18 @@ getDocs
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+import {
+
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+signOut
+
+}
+
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
 const firebaseConfig = {
 
 apiKey:
@@ -317,13 +321,29 @@ initializeApp(firebaseConfig);
 const db =
 getFirestore(app);
 
+const auth =
+getAuth(app);
+
 window.db = db;
+
 window.collection = collection;
+
 window.addDoc = addDoc;
+
 window.getDocs = getDocs;
 
+window.auth = auth;
+
+window.createUserWithEmailAndPassword =
+createUserWithEmailAndPassword;
+
+window.signInWithEmailAndPassword =
+signInWithEmailAndPassword;
+
+window.signOut = signOut;
+
 console.log(
-"Firestore подключён 🚀"
+"Firebase подключён 🚀"
 );
 
 </script>
