@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  nav>
+<div class="logo">7-2 CLASS</div>
+
+<div class="menu">
+<a href="#home">Главная</a>
+<a href="#news">Новости</a>
+<a href="#gallery">Фото</a>
+<a href="#chat">Чат</a>
+</div>
+</nav>
+
+<section class="hero" id="home">
+
+<h1>7-2 CLASS</h1>
+
+<p>
+Будущее начинается здесь.
+</p>
+
+<div class="buttons">
+<button onclick="openRegister()">
+Регистрация
+</button>
+
+<button onclick="toggleTheme()">
+Сменить тему
+</button>
+</div>
+
+</section>
+
+<section class="card" id="news">
+
+<h2>Новости 🚀</h2>
+
+<p>
+Экскурсия в пятницу.<br>
+Контрольная по математике.<br>
+Школьный турнир уже скоро.
+</p>
+
+</section>
+
+<section class="card" id="gallery">
+
+<h2>Расписание 📚</h2>
+
+<p id="scheduleText">
+
+Понедельник — Математика<br>
+Вторник — Информатика<br>
+Среда — Английский
+
+</p>
+
+</section>
+
+<section class="card" id="gallery">
+<h2>Фото 📸</h2>
+
+<div class="gallery">
+
+<div class="photo"></div>
+<div class="photo"></div>
+<div class="photo"></div>
+
+</div>
+
+</section>
+
+<section class="card" id="chat">
+
+<h2>Чат 💬</h2>
+
+<input type="text" id="messageInput" placeholder="Напиши сообщение">
+
+<button onclick="sendMessage()">
+Отправить
+</button>
+
+<div id="messages"></div>
+
+</section>
+
+<div class="register" id="registerBox">
+
+<h2>Регистрация</h2>
+
+<input type="text" placeholder="Имя">
+
+<input type="password" placeholder="Пароль">
+
+<button onclick="registerUser()">
+Создать аккаунт
+</button>
+
+</div>
+<section class="card">
+
+<h2>Ученики 👤</h2>
+
+<div class="gallery">
+
+<div class="student">
+
+<h3>Адлан</h3>
+
+<p>Создатель сайта 🚀</p>
+
+</div>
+
+<div class="student">
+
+<h3>Ученик</h3>
+
+<p>Любит информатику 💻</p>
+
+</div>
+
+<div class="student">
+
+<h3>Ученик</h3>
+
+<p>Лучший в спорте ⚽</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Загрузка фото 📸</h2>
+
+<input type="file" id="uploadPhoto">
+
+<div class="gallery" id="realGallery"></div>
+
+</section>
+
+<footer>
+Created for 7-2 
+</footer>
+<section class="card">
+
+<h2>Панель администратора ⚙️</h2>
+
+<input type="password" id="adminPassword" placeholder="Пароль администратора">
+
+<button onclick="loginAdmin()">
+Войти
+</button>
+
+<div id="adminPanel" style="display:none; margin-top:30px;">
+
+<h3>Добавить новость</h3>
+
+<input type="text" id="newsInput" placeholder="Новая новость">
+
+<button onclick="addNews()">
+Добавить новость
+</button>
+
+<br><br>
+
+<h3>Изменить расписание</h3>
+
+<textarea id="scheduleInput" rows="6" style="width:100%; border-radius:15px; padding:15px;">
+
+Понедельник — Математика
+Вторник — Информатика
+Среда — Английский
+
+</textarea>
+
+<button onclick="changeSchedule()">
+Сохранить расписание
+</button>
+
+<br><br>
+
+<h3>Добавить фото</h3>
+
+<input type="text" id="photoInput" placeholder="Ссылка на фото">
+
+<button onclick="addPhoto()">
+Добавить фото
+</button>
+
+</div>
+
+</section>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
