@@ -6,7 +6,7 @@ document.getElementById("adminPassword").value;
 let panel =
 document.getElementById("adminPanel");
 
-if(password.trim() === "1234"){
+if(password.trim() === "185673"){
 
 panel.style.display = "block";
 
@@ -85,6 +85,37 @@ text
 
 }
 
+function addHomework(){
+
+let text =
+document.getElementById(
+"homeworkInput"
+).value;
+
+if(text.trim() !== ""){
+
+let div =
+document.createElement("div");
+
+div.classList.add("message");
+
+div.innerText = text;
+
+document
+.getElementById("homeworkList")
+.appendChild(div);
+
+localStorage.setItem(
+"homeworkData",
+document
+.getElementById("homeworkList")
+.innerHTML
+);
+
+}
+
+}
+
 function addGrade(){
 
 let name =
@@ -93,7 +124,8 @@ document.getElementById("studentName").value;
 let grade =
 document.getElementById("studentGrade").value;
 
-if(name !== "" && grade !== ""){
+if(name.trim() !== "" &&
+grade.trim() !== ""){
 
 let div =
 document.createElement("div");
@@ -111,6 +143,68 @@ localStorage.setItem(
 "gradesData",
 document
 .getElementById("gradesList")
+.innerHTML
+);
+
+}
+
+}
+
+function addTopStudent(){
+
+let text =
+document.getElementById(
+"topInput"
+).value;
+
+if(text.trim() !== ""){
+
+let div =
+document.createElement("div");
+
+div.classList.add("message");
+
+div.innerText = text;
+
+document
+.getElementById("topStudents")
+.appendChild(div);
+
+localStorage.setItem(
+"topData",
+document
+.getElementById("topStudents")
+.innerHTML
+);
+
+}
+
+}
+
+function addNotification(){
+
+let text =
+document.getElementById(
+"notificationInput"
+).value;
+
+if(text.trim() !== ""){
+
+let div =
+document.createElement("div");
+
+div.classList.add("message");
+
+div.innerText = text;
+
+document
+.getElementById("notifications")
+.appendChild(div);
+
+localStorage.setItem(
+"notificationData",
+document
+.getElementById("notifications")
 .innerHTML
 );
 
@@ -267,6 +361,19 @@ schedule.replace(/\n/g,"<br>");
 
 }
 
+let homework =
+localStorage.getItem(
+"homeworkData"
+);
+
+if(homework){
+
+document
+.getElementById("homeworkList")
+.innerHTML = homework;
+
+}
+
 let grades =
 localStorage.getItem(
 "gradesData"
@@ -277,6 +384,32 @@ if(grades){
 document
 .getElementById("gradesList")
 .innerHTML = grades;
+
+}
+
+let top =
+localStorage.getItem(
+"topData"
+);
+
+if(top){
+
+document
+.getElementById("topStudents")
+.innerHTML = top;
+
+}
+
+let notifications =
+localStorage.getItem(
+"notificationData"
+);
+
+if(notifications){
+
+document
+.getElementById("notifications")
+.innerHTML = notifications;
 
 }
 
