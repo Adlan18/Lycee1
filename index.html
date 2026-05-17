@@ -1,58 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
-  <head>
-    <meta charset="UTF-8">
-    <title>Untitled</title>
-    <link rel="stylesheet" href="./style.css">
+<head>
 
-  </head>
-    
-  <body>
-  nav>
-<div class="logo">7-2 CLASS</div>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<div class="menu">
-<a href="#home">Главная</a>
-<a href="#news">Новости</a>
-<a href="#gallery">Фото</a>
-<a href="#chat">Чат</a>
-</div>
-</nav>
+<title>7B CLASS 🚀</title>
 
-<section class="hero" id="home">
+<link rel="stylesheet" href="style.css">
 
-<h1>7-2 CLASS</h1>
+</head>
 
-<p>
-Будущее начинается здесь.
-</p>
+<body>
 
-<div class="buttons">
-<button onclick="openRegister()">
-Регистрация
-</button>
+<div class="stars"></div>
+
+<header class="hero">
+
+<h1>7B CLASS 🚀</h1>
+
+<p>Сайт класса будущего</p>
 
 <button onclick="toggleTheme()">
-Сменить тему
+🌙 / ☀️
 </button>
+
+</header>
+
+<section class="card">
+
+<h2>Новости 📰</h2>
+
+<div id="newsList">
+
+<div class="message">
+Экскурсия в пятницу 🚀
+</div>
+
 </div>
 
 </section>
 
-<section class="card" id="news">
-
-<h2>Новости 🚀</h2>
-
-<p>
-Экскурсия в пятницу.<br>
-Контрольная по математике.<br>
-Школьный турнир уже скоро.
-</p>
-
-</section>
-
-<section class="card" id="gallery">
+<section class="card">
 
 <h2>Расписание 📚</h2>
 
@@ -66,77 +57,104 @@
 
 </section>
 
-<section class="card" id="gallery">
-<h2>Фото 📸</h2>
-
-<div class="gallery">
-
-<div class="photo"></div>
-<div class="photo"></div>
-<div class="photo"></div>
-
-</div>
-
-</section>
-
-<section class="card" id="chat">
-
-<h2>Чат 💬</h2>
-
-<input type="text" id="messageInput" placeholder="Напиши сообщение">
-
-<button onclick="sendMessage()">
-Отправить
-</button>
-
-<div id="messages"></div>
-
-</section>
-
-<div class="register" id="registerBox">
-
-<h2>Регистрация</h2>
-
-<input type="text" placeholder="Имя">
-
-<input type="password" placeholder="Пароль">
-
-<button onclick="registerUser()">
-Создать аккаунт
-</button>
-
-</div>
 <section class="card">
 
-<h2>Ученики 👤</h2>
+<h2>Домашнее задание 📚</h2>
 
-<div class="gallery">
+<div id="homeworkList">
 
-<div class="student">
-
-<h3>Адлан</h3>
-
-<p>Создатель сайта 🚀</p>
-
-</div>
-
-<div class="student">
-
-<h3>Ученик</h3>
-
-<p>Любит информатику 💻</p>
-
-</div>
-
-<div class="student">
-
-<h3>Ученик</h3>
-
-<p>Лучший в спорте ⚽</p>
-
+<div class="message">
+Математика — №245
 </div>
 
 </div>
+
+</section>
+
+<section class="card">
+
+<h2>Оценки 📊</h2>
+
+<input type="text"
+id="studentName"
+placeholder="Имя">
+
+<input type="number"
+id="studentGrade"
+placeholder="Оценка">
+
+<button onclick="addGrade()">
+Добавить
+</button>
+
+<div id="gradesList">
+
+<div class="message">
+Адлан — 5 ⭐
+</div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Топ учеников 🏆</h2>
+
+<div class="message">
+1. Адлан — 250 XP 🚀
+</div>
+
+<div class="message">
+2. Ученик — 180 XP
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Уведомления 🔔</h2>
+
+<div id="notifications">
+
+<div class="message">
+Завтра контрольная 😅
+</div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>AI Помощник 🤖</h2>
+
+<input type="text"
+id="aiInput"
+placeholder="Спроси что-нибудь">
+
+<button onclick="askAI()">
+Спросить
+</button>
+
+<p id="aiResponse"></p>
+
+</section>
+
+<section class="card">
+
+<h2>Заметки 📝</h2>
+
+<textarea
+id="noteInput"
+placeholder="Напиши заметку...">
+</textarea>
+
+<button onclick="saveNote()">
+Сохранить
+</button>
+
+<p id="savedNote"></p>
 
 </section>
 
@@ -144,40 +162,43 @@
 
 <h2>Загрузка фото 📸</h2>
 
-<input type="file" id="uploadPhoto">
+<input type="file"
+id="uploadPhoto">
 
-<div class="gallery" id="realGallery"></div>
+<div class="gallery"
+id="realGallery">
+</div>
 
 </section>
 
-<footer>
-Created for 7-2 
-</footer>
 <section class="card">
 
 <h2>Панель администратора ⚙️</h2>
 
-<input type="password" id="adminPassword" placeholder="Пароль администратора">
+<input
+type="password"
+id="adminPassword"
+placeholder="Пароль">
 
 <button onclick="loginAdmin()">
 Войти
 </button>
 
-<div id="adminPanel" style="display:none; margin-top:30px;">
+<div id="adminPanel">
 
 <h3>Добавить новость</h3>
 
-<input type="text" id="newsInput" placeholder="Новая новость">
+<input type="text"
+id="newsInput"
+placeholder="Новая новость">
 
 <button onclick="addNews()">
-Добавить новость
+Добавить
 </button>
-
-<br><br>
 
 <h3>Изменить расписание</h3>
 
-<textarea id="scheduleInput" rows="6" style="width:100%; border-radius:15px; padding:15px;">
+<textarea id="scheduleInput">
 
 Понедельник — Математика
 Вторник — Информатика
@@ -186,24 +207,20 @@ Created for 7-2
 </textarea>
 
 <button onclick="changeSchedule()">
-Сохранить расписание
-</button>
-
-<br><br>
-
-<h3>Добавить фото</h3>
-
-<input type="text" id="photoInput" placeholder="Ссылка на фото">
-
-<button onclick="addPhoto()">
-Добавить фото
+Сохранить
 </button>
 
 </div>
 
 </section>
-    <script  src="./script.js"></script>
 
-  </body>
-  
+<footer>
+
+Created by Adlan 😎
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
 </html>
