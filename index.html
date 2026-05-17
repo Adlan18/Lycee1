@@ -1,1 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>7B CLASS 🚀</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<header class="hero">
+
+<h1>7B CLASS 🚀</h1>
+
+<p>Сайт класса будущего</p>
+
+<button onclick="toggleTheme()">
+🌙 / ☀️
+</button>
+
+</header>
+
+<section class="card">
+
+<h2>Новости 📰</h2>
+
+<div id="newsList">
+
+<div class="message">
+Экскурсия в пятницу 🚀
+</div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Расписание 📚</h2>
+
+<p id="scheduleText">
+
+Понедельник — Математика<br>
+Вторник — Информатика<br>
+Среда — Английский
+
+</p>
+
+</section>
+
+<section class="card">
+
+<h2>Домашнее задание 📚</h2>
+
+<div id="homeworkList">
+
+<div class="message">
+Математика — №245
+</div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Оценки 📊</h2>
+
+<input type="text"
+id="studentName"
+placeholder="Имя">
+
+<input type="number"
+id="studentGrade"
+placeholder="Оценка">
+
+<button onclick="addGrade()">
+Добавить
+</button>
+
+<div id="gradesList">
+
+<div class="message">
+Адлан — 5 ⭐
+</div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Топ учеников 🏆</h2>
+
+<div class="message">
+1. Адлан — 250 XP 🚀
+</div>
+
+<div class="message">
+2. Ученик — 180 XP
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Уведомления 🔔</h2>
+
+<div id="notifications">
+
+<div class="message">
+Завтра контрольная 😅
+</div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>AI Помощник 🤖</h2>
+
+<input type="text"
+id="aiInput"
+placeholder="Спроси что-нибудь">
+
+<button onclick="askAI()">
+Спросить
+</button>
+
+<p id="aiResponse"></p>
+
+</section>
+
+<section class="card">
+
+<h2>Заметки 📝</h2>
+
+<textarea
+id="noteInput"
+placeholder="Напиши заметку...">
+</textarea>
+
+<button onclick="saveNote()">
+Сохранить
+</button>
+
+<p id="savedNote"></p>
+
+</section>
+
+<section class="card">
+
+<h2>Загрузка фото 📸</h2>
+
+<input type="file"
+id="uploadPhoto">
+
+<div class="gallery"
+id="realGallery">
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Панель администратора ⚙️</h2>
+
+<input
+type="password"
+id="adminPassword"
+placeholder="Пароль">
+
+<button onclick="loginAdmin()">
+Войти
+</button>
+
+<div id="adminPanel">
+
+<h3>Добавить новость</h3>
+
+<input type="text"
+id="newsInput"
+placeholder="Новая новость">
+
+<button onclick="addNews()">
+Добавить
+</button>
+
+<h3>Изменить расписание</h3>
+
+<textarea id="scheduleInput">
+
+Понедельник — Математика
+Вторник — Информатика
+Среда — Английский
+
+</textarea>
+
+<button onclick="changeSchedule()">
+Сохранить
+</button>
+
+</div>
+
+</section>
+
+<footer>
+
+Created by Adlan 😎
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
