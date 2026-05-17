@@ -37,8 +37,6 @@ localStorage.removeItem(
 "adminLogged"
 );
 
-alert("Вы вышли из админки");
-
 }
 
 function addNews(){
@@ -59,37 +57,12 @@ document
 .getElementById("newsList")
 .appendChild(div);
 
-document
-.getElementById("newsInput")
-.value = "";
-
-saveNews();
-
-}
-
-}
-
-function saveNews(){
-
 localStorage.setItem(
 "newsData",
 document
 .getElementById("newsList")
 .innerHTML
 );
-
-}
-
-function loadNews(){
-
-let saved =
-localStorage.getItem("newsData");
-
-if(saved){
-
-document
-.getElementById("newsList")
-.innerHTML = saved;
 
 }
 
@@ -110,30 +83,6 @@ localStorage.setItem(
 text
 );
 
-alert("Расписание сохранено 📚");
-
-}
-
-function loadSchedule(){
-
-let saved =
-localStorage.getItem(
-"scheduleData"
-);
-
-if(saved){
-
-document
-.getElementById("scheduleText")
-.innerHTML =
-saved.replace(/\n/g,"<br>");
-
-document
-.getElementById("scheduleInput")
-.value = saved;
-
-}
-
 }
 
 function addGrade(){
@@ -144,8 +93,7 @@ document.getElementById("studentName").value;
 let grade =
 document.getElementById("studentGrade").value;
 
-if(name.trim() !== "" &&
-grade.trim() !== ""){
+if(name !== "" && grade !== ""){
 
 let div =
 document.createElement("div");
@@ -159,43 +107,12 @@ document
 .getElementById("gradesList")
 .appendChild(div);
 
-document
-.getElementById("studentName")
-.value = "";
-
-document
-.getElementById("studentGrade")
-.value = "";
-
-saveGrades();
-
-}
-
-}
-
-function saveGrades(){
-
 localStorage.setItem(
 "gradesData",
 document
 .getElementById("gradesList")
 .innerHTML
 );
-
-}
-
-function loadGrades(){
-
-let saved =
-localStorage.getItem(
-"gradesData"
-);
-
-if(saved){
-
-document
-.getElementById("gradesList")
-.innerHTML = saved;
 
 }
 
@@ -211,33 +128,23 @@ let response = "";
 
 if(text.includes("привет")){
 
-response =
-"Привет 😎";
+response = "Привет 😎";
 
 }else if(text.includes("расписание")){
 
-response =
-"Смотри раздел расписания 📚";
+response = "Смотри расписание 📚";
 
 }else if(text.includes("дз")){
 
-response =
-"Домашнее задание есть в разделе 📚";
+response = "Домашнее задание есть 📖";
 
 }else if(text.includes("каникулы")){
 
-response =
-"Скоро каникулы 🚀";
-
-}else if(text.includes("оценки")){
-
-response =
-"Смотри раздел оценок 📊";
+response = "Скоро каникулы 🚀";
 
 }else{
 
-response =
-"Я пока не знаю ответ 😅";
+response = "Я пока не знаю 😅";
 
 }
 
@@ -263,50 +170,9 @@ note
 
 }
 
-function loadNote(){
-
-let saved =
-localStorage.getItem(
-"savedNote"
-);
-
-if(saved){
-
-document
-.getElementById("savedNote")
-.innerText = saved;
-
-document
-.getElementById("noteInput")
-.value = saved;
-
-}
-
-}
-
 function toggleTheme(){
 
 document.body.classList.toggle("light");
-
-localStorage.setItem(
-"theme",
-document.body.classList.contains("light")
-? "light"
-: "dark"
-);
-
-}
-
-function loadTheme(){
-
-let theme =
-localStorage.getItem("theme");
-
-if(theme === "light"){
-
-document.body.classList.add("light");
-
-}
 
 }
 
@@ -333,8 +199,6 @@ document
 .getElementById("realGallery")
 .appendChild(img);
 
-saveGallery();
-
 }
 
 reader.readAsDataURL(file);
@@ -342,34 +206,6 @@ reader.readAsDataURL(file);
 }
 
 });
-
-function saveGallery(){
-
-localStorage.setItem(
-"galleryData",
-document
-.getElementById("realGallery")
-.innerHTML
-);
-
-}
-
-function loadGallery(){
-
-let saved =
-localStorage.getItem(
-"galleryData"
-);
-
-if(saved){
-
-document
-.getElementById("realGallery")
-.innerHTML = saved;
-
-}
-
-}
 
 for(let i=0;i<120;i++){
 
@@ -406,16 +242,55 @@ document
 
 }
 
-loadNews();
+let news =
+localStorage.getItem("newsData");
 
-loadSchedule();
+if(news){
 
-loadGrades();
+document
+.getElementById("newsList")
+.innerHTML = news;
 
-loadNote();
+}
 
-loadGallery();
+let schedule =
+localStorage.getItem(
+"scheduleData"
+);
 
-loadTheme();
+if(schedule){
+
+document
+.getElementById("scheduleText")
+.innerHTML =
+schedule.replace(/\n/g,"<br>");
+
+}
+
+let grades =
+localStorage.getItem(
+"gradesData"
+);
+
+if(grades){
+
+document
+.getElementById("gradesList")
+.innerHTML = grades;
+
+}
+
+let note =
+localStorage.getItem(
+"savedNote"
+);
+
+if(note){
+
+document
+.getElementById("savedNote")
+.innerText = note;
+
+}
 
 }
