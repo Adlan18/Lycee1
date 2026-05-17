@@ -274,6 +274,18 @@ Created by Adlan 😎
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
+import {
+
+getFirestore,
+collection,
+addDoc,
+getDocs
+
+}
+
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
 const firebaseConfig = {
 
 apiKey:
@@ -302,8 +314,16 @@ measurementId:
 const app =
 initializeApp(firebaseConfig);
 
+const db =
+getFirestore(app);
+
+window.db = db;
+window.collection = collection;
+window.addDoc = addDoc;
+window.getDocs = getDocs;
+
 console.log(
-"Firebase подключён 🚀"
+"Firestore подключён 🚀"
 );
 
 </script>
