@@ -1,150 +1,196 @@
-function toggleTheme(){
-document.body.classList.toggle("light");
-}
+body{
 
-function openRegister(){
-document.getElementById("registerBox").style.display="block";
-}
+margin:0;
+font-family:sans-serif;
 
-function registerUser(){
+background:#050816;
+color:white;
 
-alert("Аккаунт создан 🚀");
-
-document.getElementById("registerBox").style.display="none";
-}
-
-function sendMessage(){
-
-let input=document.getElementById("messageInput");
-
-if(input.value.trim()!=""){
-
-let div=document.createElement("div");
-
-div.classList.add("message");
-
-div.innerText=input.value;
-
-document.getElementById("messages").appendChild(div);
-
-input.value="";
-}
+text-align:center;
+overflow-x:hidden;
 
 }
 
-function loginAdmin(){
+.hero{
 
-let password=document.getElementById("adminPassword").value;
-
-if(password==="1234"){
-
-document.getElementById("adminPanel").style.display="block";
-
-alert("Админ панель открыта 😎");
-
-}else{
-
-alert("Неверный пароль");
+padding:120px 20px;
 
 }
 
-}
+.hero h1{
 
-function addNews(){
-
-let text=document.getElementById("newsInput").value;
-
-if(text!=""){
-
-let p=document.createElement("p");
-
-p.innerText=text;
-
-document.getElementById("newsList").appendChild(p);
+font-size:70px;
+letter-spacing:5px;
 
 }
 
-}
+.card{
 
-function changeSchedule(){
+margin:30px;
+padding:30px;
 
-let text=document.getElementById("scheduleInput").value;
-
-document.getElementById("scheduleText").innerHTML=
-text.replace(/\n/g,"<br>");
-
-alert("Расписание обновлено 🚀");
-
-}
-
-function addPhoto(){
-
-let url=document.getElementById("photoInput").value;
-
-if(url!=""){
-
-let img=document.createElement("img");
-
-img.src=url;
-
-img.style.width="100%";
-
-img.style.borderRadius="25px";
-
-img.style.marginTop="20px";
-
-document.querySelector(".gallery").appendChild(img);
-
-}
-
-.student{
-padding:40px;
 border-radius:30px;
+
 background:
-rgba(255,255,255,0.05);
+rgba(255,255,255,0.06);
+
+border:
+1px solid rgba(255,255,255,0.08);
 
 backdrop-filter:blur(20px);
 
 transition:0.4s;
+
 }
 
-.student:hover{
+.card:hover{
+
+transform:translateY(-10px);
+
+}
+
+input,
+textarea{
+
+width:90%;
+
+padding:15px;
+margin:10px;
+
+border:none;
+border-radius:15px;
+
+background:
+rgba(255,255,255,0.08);
+
+color:white;
+
+font-size:16px;
+
+}
+
+button{
+
+padding:15px 30px;
+
+border:none;
+border-radius:15px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+button:hover{
+
 transform:scale(1.05);
+
+}
+
+.message{
+
+margin:15px;
+padding:15px;
+
+border-radius:15px;
+
+background:
+rgba(255,255,255,0.08);
+
+}
+
+.gallery img{
+
+width:100%;
+border-radius:20px;
+margin-top:20px;
+
+}
+
+#adminPanel{
+
+display:none;
+
+}
+
+.light{
+
+background:white;
+color:black;
+
+}
+
+.light .card{
+
+background:
+rgba(0,0,0,0.05);
+
+}
+
+.stars{
+
+position:fixed;
+width:100%;
+height:100%;
+
+top:0;
+left:0;
+
+overflow:hidden;
+
+z-index:-5;
+
+}
+
+.star{
+
+position:absolute;
+
+width:2px;
+height:2px;
+
+background:white;
+
+border-radius:50%;
+
+animation:moveStars linear infinite;
+
+}
+
+@keyframes moveStars{
+
+from{
+transform:translateY(0);
+}
+
+to{
+transform:translateY(-2000px);
+}
+
+}
+
+@media(max-width:700px){
+
+.hero h1{
+
+font-size:42px;
+
 }
 
 .card{
-backdrop-filter:blur(20px);
-}
-document
-.getElementById("uploadPhoto")
-.addEventListener("change",function(event){
 
-let file=event.target.files[0];
-
-if(file){
-
-let reader=new FileReader();
-
-reader.onload=function(e){
-
-let img=document.createElement("img");
-
-img.src=e.target.result;
-
-img.style.width="100%";
-
-img.style.borderRadius="25px";
-
-img.style.marginTop="20px";
-
-document
-.getElementById("realGallery")
-.appendChild(img);
+margin:15px;
+padding:20px;
 
 }
 
-reader.readAsDataURL(file);
+button{
+
+width:100%;
 
 }
 
-});
+}
