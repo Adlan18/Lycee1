@@ -4,6 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
@@ -59,7 +60,7 @@ content="width=device-width, initial-scale=1.0">
 
 <section class="card">
 
-<h2>Домашнее задание 📚</h2>
+<h2>Домашнее задание 📖</h2>
 
 <div id="homeworkList">
 
@@ -75,11 +76,13 @@ content="width=device-width, initial-scale=1.0">
 
 <h2>Оценки 📊</h2>
 
-<input type="text"
+<input
+type="text"
 id="studentName"
 placeholder="Имя">
 
-<input type="number"
+<input
+type="number"
 id="studentGrade"
 placeholder="Оценка">
 
@@ -129,7 +132,8 @@ placeholder="Оценка">
 
 <h2>AI Помощник 🤖</h2>
 
-<input type="text"
+<input
+type="text"
 id="aiInput"
 placeholder="Спроси что-нибудь">
 
@@ -184,11 +188,16 @@ placeholder="Пароль">
 Войти
 </button>
 
+<button onclick="logoutAdmin()">
+Выйти
+</button>
+
 <div id="adminPanel">
 
 <h3>Добавить новость</h3>
 
-<input type="text"
+<input
+type="text"
 id="newsInput"
 placeholder="Новая новость">
 
