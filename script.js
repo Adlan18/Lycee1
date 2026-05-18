@@ -109,7 +109,7 @@ newsList.appendChild(div);
 
 }
 
-function addHomework(){
+async function addHomework(){
 
 let text =
 document.getElementById(
@@ -118,29 +118,63 @@ document.getElementById(
 
 if(text.trim() !== ""){
 
+await addDoc(
+
+collection(
+window.db,
+"homework"
+),
+
+{
+
+text:text
+
+}
+
+);
+
+loadHomework();
+
+}
+
+}
+
+async function loadHomework(){
+
+let list =
+document.getElementById(
+"homeworkList"
+);
+
+list.innerHTML = "";
+
+const querySnapshot =
+await getDocs(
+
+collection(
+window.db,
+"homework"
+)
+
+);
+
+querySnapshot.forEach((doc)=>{
+
 let div =
 document.createElement("div");
 
 div.classList.add("message");
 
-div.innerText = text;
+div.innerText =
+doc.data().text;
 
-document
-.getElementById("homeworkList")
-.appendChild(div);
+list.appendChild(div);
 
-localStorage.setItem(
-"homeworkData",
-document
-.getElementById("homeworkList")
-.innerHTML
-);
+});
 
 }
 
-}
-
-function addGrade(){
+async function addGrade(){
 
 let name =
 document.getElementById(
@@ -152,7 +186,46 @@ document.getElementById(
 "studentGrade"
 ).value;
 
-if(name && grade){
+await addDoc(
+
+collection(
+window.db,
+"grades"
+),
+
+{
+
+name:name,
+grade:grade
+
+}
+
+);
+
+loadGrades();
+
+}
+
+async function loadGrades(){
+
+let list =
+document.getElementById(
+"gradesList"
+);
+
+list.innerHTML = "";
+
+const querySnapshot =
+await getDocs(
+
+collection(
+window.db,
+"grades"
+)
+
+);
+
+querySnapshot.forEach((doc)=>{
 
 let div =
 document.createElement("div");
@@ -160,74 +233,138 @@ document.createElement("div");
 div.classList.add("message");
 
 div.innerText =
-name + " — " + grade;
 
-document
-.getElementById("gradesList")
-.appendChild(div);
+doc.data().name
++
+" — "
++
+doc.data().grade;
 
-localStorage.setItem(
-"gradesData",
-document
-.getElementById("gradesList")
-.innerHTML
-);
+list.appendChild(div);
+
+});
 
 }
 
-}
-
-function addTopStudent(){
+async function addTopStudent(){
 
 let text =
 document.getElementById(
 "topInput"
 ).value;
 
+await addDoc(
+
+collection(
+window.db,
+"topStudents"
+),
+
+{
+
+text:text
+
+}
+
+);
+
+loadTopStudents();
+
+}
+
+async function loadTopStudents(){
+
+let list =
+document.getElementById(
+"topStudents"
+);
+
+list.innerHTML = "";
+
+const querySnapshot =
+await getDocs(
+
+collection(
+window.db,
+"topStudents"
+)
+
+);
+
+querySnapshot.forEach((doc)=>{
+
 let div =
 document.createElement("div");
 
 div.classList.add("message");
 
-div.innerText = text;
+div.innerText =
+doc.data().text;
 
-document
-.getElementById("topStudents")
-.appendChild(div);
+list.appendChild(div);
 
-localStorage.setItem(
-"topData",
-document
-.getElementById("topStudents")
-.innerHTML
-);
+});
 
 }
 
-function addNotification(){
+async function addNotification(){
 
 let text =
 document.getElementById(
 "notificationInput"
 ).value;
 
+await addDoc(
+
+collection(
+window.db,
+"notifications"
+),
+
+{
+
+text:text
+
+}
+
+);
+
+loadNotifications();
+
+}
+
+async function loadNotifications(){
+
+let list =
+document.getElementById(
+"notifications"
+);
+
+list.innerHTML = "";
+
+const querySnapshot =
+await getDocs(
+
+collection(
+window.db,
+"notifications"
+)
+
+);
+
+querySnapshot.forEach((doc)=>{
+
 let div =
 document.createElement("div");
 
 div.classList.add("message");
 
-div.innerText = text;
+div.innerText =
+doc.data().text;
 
-document
-.getElementById("notifications")
-.appendChild(div);
+list.appendChild(div);
 
-localStorage.setItem(
-"notificationData",
-document
-.getElementById("notifications")
-.innerHTML
-);
+});
 
 }
 
@@ -416,6 +553,14 @@ window.onload = function(){
 
 loadNews();
 
+loadHomework();
+
+loadGrades();
+
+loadTopStudents();
+
+loadNotifications();
+
 if(
 localStorage.getItem(
 "adminLogged"
@@ -438,58 +583,6 @@ if(note){
 document
 .getElementById("savedNote")
 .innerText = note;
-
-}
-
-let homework =
-localStorage.getItem(
-"homeworkData"
-);
-
-if(homework){
-
-document
-.getElementById("homeworkList")
-.innerHTML = homework;
-
-}
-
-let grades =
-localStorage.getItem(
-"gradesData"
-);
-
-if(grades){
-
-document
-.getElementById("gradesList")
-.innerHTML = grades;
-
-}
-
-let top =
-localStorage.getItem(
-"topData"
-);
-
-if(top){
-
-document
-.getElementById("topStudents")
-.innerHTML = top;
-
-}
-
-let notifications =
-localStorage.getItem(
-"notificationData"
-);
-
-if(notifications){
-
-document
-.getElementById("notifications")
-.innerHTML = notifications;
 
 }
 
