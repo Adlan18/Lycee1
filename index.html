@@ -67,13 +67,7 @@ placeholder="Пароль">
 
 <h2>Новости 📰</h2>
 
-<div id="newsList">
-
-<div class="message">
-Добро пожаловать 🚀
-</div>
-
-</div>
+<div id="newsList"></div>
 
 </section>
 
@@ -95,13 +89,7 @@ placeholder="Пароль">
 
 <h2>Домашнее задание 📖</h2>
 
-<div id="homeworkList">
-
-<div class="message">
-Пока нет домашнего задания 😎
-</div>
-
-</div>
+<div id="homeworkList"></div>
 
 </section>
 
@@ -109,13 +97,7 @@ placeholder="Пароль">
 
 <h2>Оценки 📊</h2>
 
-<div id="gradesList">
-
-<div class="message">
-Пока оценок нет 😎
-</div>
-
-</div>
+<div id="gradesList"></div>
 
 </section>
 
@@ -123,13 +105,7 @@ placeholder="Пароль">
 
 <h2>Топ учеников 🏆</h2>
 
-<div id="topStudents">
-
-<div class="message">
-Топ пока пуст 😎
-</div>
-
-</div>
+<div id="topStudents"></div>
 
 </section>
 
@@ -137,13 +113,7 @@ placeholder="Пароль">
 
 <h2>Уведомления 🔔</h2>
 
-<div id="notifications">
-
-<div class="message">
-Пока уведомлений нет 😎
-</div>
-
-</div>
+<div id="notifications"></div>
 
 </section>
 
@@ -183,6 +153,21 @@ placeholder="Напиши заметку...">
 
 <section class="card">
 
+<h2>Фото 📸</h2>
+
+<input
+type="file"
+id="uploadPhoto">
+
+<div
+class="gallery"
+id="realGallery">
+</div>
+
+</section>
+
+<section class="card">
+
 <h2>Панель администратора ⚙️</h2>
 
 <input
@@ -205,7 +190,7 @@ placeholder="Пароль">
 <input
 type="text"
 id="newsInput"
-placeholder="Новая новость">
+placeholder="Новость">
 
 <button onclick="addNews()">
 Добавить
@@ -216,7 +201,7 @@ placeholder="Новая новость">
 <input
 type="text"
 id="homeworkInput"
-placeholder="Новое ДЗ">
+placeholder="ДЗ">
 
 <button onclick="addHomework()">
 Добавить
@@ -238,12 +223,23 @@ placeholder="Оценка">
 Добавить
 </button>
 
-<h3>Отправить уведомление 🔔</h3>
+<h3>Добавить топ 🏆</h3>
+
+<input
+type="text"
+id="topInput"
+placeholder="Имя и XP">
+
+<button onclick="addTopStudent()">
+Добавить
+</button>
+
+<h3>Уведомление 🔔</h3>
 
 <input
 type="text"
 id="notificationInput"
-placeholder="Уведомление">
+placeholder="Текст">
 
 <button onclick="addNotification()">
 Отправить
@@ -341,10 +337,6 @@ window.signInWithEmailAndPassword =
 signInWithEmailAndPassword;
 
 window.signOut = signOut;
-
-console.log(
-"Firebase подключён 🚀"
-);
 
 </script>
 
