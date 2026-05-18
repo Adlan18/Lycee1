@@ -1,25 +1,30 @@
+function toggleTheme(){
+
+document.body.classList.toggle(
+"light"
+);
+
+}
+
 function loginAdmin(){
 
 let password =
-document.getElementById("adminPassword").value;
+document.getElementById(
+"adminPassword"
+).value;
 
-let panel =
-document.getElementById("adminPanel");
+if(password === "1234"){
 
-if(password.trim() === "185673"){
-
-panel.style.display = "block";
+document
+.getElementById("adminPanel")
+.style.display = "block";
 
 localStorage.setItem(
 "adminLogged",
 "true"
 );
 
-alert("Админ панель открыта 😎");
-
 }else{
-
-panel.style.display = "none";
 
 alert("Неверный пароль ❌");
 
@@ -39,49 +44,68 @@ localStorage.removeItem(
 
 }
 
-function addNews(){
+async function addNews(){
 
 let text =
-document.getElementById("newsInput").value;
+document.getElementById(
+"newsInput"
+).value;
 
 if(text.trim() !== ""){
+
+await addDoc(
+
+collection(
+window.db,
+"news"
+),
+
+{
+
+text:text
+
+}
+
+);
+
+loadNews();
+
+}
+
+}
+
+async function loadNews(){
+
+let newsList =
+document.getElementById(
+"newsList"
+);
+
+newsList.innerHTML = "";
+
+const querySnapshot =
+await getDocs(
+
+collection(
+window.db,
+"news"
+)
+
+);
+
+querySnapshot.forEach((doc)=>{
 
 let div =
 document.createElement("div");
 
 div.classList.add("message");
 
-div.innerText = text;
+div.innerText =
+doc.data().text;
 
-document
-.getElementById("newsList")
-.appendChild(div);
+newsList.appendChild(div);
 
-localStorage.setItem(
-"newsData",
-document
-.getElementById("newsList")
-.innerHTML
-);
-
-}
-
-}
-
-function changeSchedule(){
-
-let text =
-document.getElementById("scheduleInput").value;
-
-document
-.getElementById("scheduleText")
-.innerHTML =
-text.replace(/\n/g,"<br>");
-
-localStorage.setItem(
-"scheduleData",
-text
-);
+});
 
 }
 
@@ -119,21 +143,24 @@ document
 function addGrade(){
 
 let name =
-document.getElementById("studentName").value;
+document.getElementById(
+"studentName"
+).value;
 
 let grade =
-document.getElementById("studentGrade").value;
+document.getElementById(
+"studentGrade"
+).value;
 
-if(name.trim() !== "" &&
-grade.trim() !== ""){
+if(name && grade){
 
 let div =
 document.createElement("div");
 
 div.classList.add("message");
 
-div.innerHTML =
-name + " — " + grade + " ⭐";
+div.innerText =
+name + " — " + grade;
 
 document
 .getElementById("gradesList")
@@ -157,8 +184,6 @@ document.getElementById(
 "topInput"
 ).value;
 
-if(text.trim() !== ""){
-
 let div =
 document.createElement("div");
 
@@ -179,16 +204,12 @@ document
 
 }
 
-}
-
 function addNotification(){
 
 let text =
 document.getElementById(
 "notificationInput"
 ).value;
-
-if(text.trim() !== ""){
 
 let div =
 document.createElement("div");
@@ -210,13 +231,12 @@ document
 
 }
 
-}
-
 function askAI(){
 
 let text =
-document.getElementById("aiInput")
-.value.toLowerCase();
+document.getElementById(
+"aiInput"
+).value.toLowerCase();
 
 let response = "";
 
@@ -224,17 +244,13 @@ if(text.includes("привет")){
 
 response = "Привет 😎";
 
-}else if(text.includes("расписание")){
-
-response = "Смотри расписание 📚";
-
 }else if(text.includes("дз")){
 
 response = "Домашнее задание есть 📖";
 
-}else if(text.includes("каникулы")){
+}else if(text.includes("расписание")){
 
-response = "Скоро каникулы 🚀";
+response = "Смотри расписание 📚";
 
 }else{
 
@@ -251,22 +267,18 @@ document
 function saveNote(){
 
 let note =
-document.getElementById("noteInput").value;
-
-document
-.getElementById("savedNote")
-.innerText = note;
+document.getElementById(
+"noteInput"
+).value;
 
 localStorage.setItem(
 "savedNote",
 note
 );
 
-}
-
-function toggleTheme(){
-
-document.body.classList.toggle("light");
+document
+.getElementById("savedNote")
+.innerText = note;
 
 }
 
@@ -293,13 +305,90 @@ document
 .getElementById("realGallery")
 .appendChild(img);
 
-}
+};
 
 reader.readAsDataURL(file);
 
 }
 
 });
+
+async function registerUser(){
+
+let email =
+document.getElementById(
+"email"
+).value;
+
+let password =
+document.getElementById(
+"password"
+).value;
+
+try{
+
+await createUserWithEmailAndPassword(
+window.auth,
+email,
+password
+);
+
+document
+.getElementById("userStatus")
+.innerText =
+"Аккаунт создан 😎";
+
+}catch(error){
+
+alert(error.message);
+
+}
+
+}
+
+async function loginUser(){
+
+let email =
+document.getElementById(
+"email"
+).value;
+
+let password =
+document.getElementById(
+"password"
+).value;
+
+try{
+
+await signInWithEmailAndPassword(
+window.auth,
+email,
+password
+);
+
+document
+.getElementById("userStatus")
+.innerText =
+"Вы вошли 😎";
+
+}catch(error){
+
+alert(error.message);
+
+}
+
+}
+
+async function logoutUser(){
+
+await signOut(window.auth);
+
+document
+.getElementById("userStatus")
+.innerText =
+"Вы вышли 😅";
+
+}
 
 for(let i=0;i<120;i++){
 
@@ -315,7 +404,7 @@ star.style.top =
 Math.random()*100+"%";
 
 star.style.animationDuration =
-20 + Math.random()*80 + "s";
+20 + Math.random()*50 + "s";
 
 document
 .querySelector(".stars")
@@ -325,9 +414,12 @@ document
 
 window.onload = function(){
 
+loadNews();
+
 if(
-localStorage.getItem("adminLogged")
-=== "true"
+localStorage.getItem(
+"adminLogged"
+)==="true"
 ){
 
 document
@@ -336,28 +428,16 @@ document
 
 }
 
-let news =
-localStorage.getItem("newsData");
-
-if(news){
-
-document
-.getElementById("newsList")
-.innerHTML = news;
-
-}
-
-let schedule =
+let note =
 localStorage.getItem(
-"scheduleData"
+"savedNote"
 );
 
-if(schedule){
+if(note){
 
 document
-.getElementById("scheduleText")
-.innerHTML =
-schedule.replace(/\n/g,"<br>");
+.getElementById("savedNote")
+.innerText = note;
 
 }
 
@@ -410,19 +490,6 @@ if(notifications){
 document
 .getElementById("notifications")
 .innerHTML = notifications;
-
-}
-
-let note =
-localStorage.getItem(
-"savedNote"
-);
-
-if(note){
-
-document
-.getElementById("savedNote")
-.innerText = note;
 
 }
 
